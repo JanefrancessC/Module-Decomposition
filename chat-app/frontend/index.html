@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chat Application</title>
+  </head>
+  <body>
+    <header>
+      <h1>Chat App</h1>
+    </header>
+    <main>
+      <form id="polling-form">
+        <fieldset>
+          <legend>Please select your preferred fetch method:</legend>
+          <div>
+            <input
+              type="radio"
+              id="regular-polling"
+              name="polling"
+              value="regular"
+              checked
+            />
+            <label for="regular-polling">Regular polling</label>
+
+            <input type="radio" id="long-polling" name="polling" value="long" />
+            <label for="long-polling">Long polling</label>
+          </div>
+        </fieldset>
+      </form>
+      <div>
+        <p id="feedback"></p>
+        <form id="send-message">
+          <label for="user"
+            >User:
+            <input type="text" name="user" id="user" required />
+          </label>
+          <label for="message"
+            >Enter your message:
+            <input type="text" name="message" id="message" required />
+          </label>
+          <button>Send Message</button>
+        </form>
+      </div>
+      <h2>Posts</h2>
+      <div id="display-message"></div>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
