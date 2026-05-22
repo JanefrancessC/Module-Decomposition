@@ -5,8 +5,8 @@ let messageEl = document.getElementById("message");
 let displayBox = document.getElementById("display-message");
 let feedbackEl = document.getElementById("feedback");
 
-const serverURL = `https://janefrancessc-chat-application-backend.hosting.codeyourfuture.io/messages`;
-// const serverURL = "http://127.0.0.1:3000/messages";
+// const serverURL = `https://janefrancessc-chat-application-backend.hosting.codeyourfuture.io/messages`;
+const serverURL = "http://127.0.0.1:3000/messages";
 const state = { messages: [] };
 let pollingMode = "regular";
 let longPoll = false;
@@ -19,7 +19,7 @@ pollingForm.addEventListener("change", (e) => {
   longPoll = pollingMode === "long";
 
   feedbackEl.innerHTML = `
-  <p>${longPoll ? "Using long polling" : "Using regular polling"}</p>
+  <p>${longPoll ? "Using long polling!" : "Using regular polling!"}</p>
   `;
   setTimeout(() => {
     feedbackEl.innerHTML = "";
@@ -60,7 +60,49 @@ async function keepFetchingMessages() {
   if (longPoll) {
     keepFetchingMessages();
   } else {
-    setTimeout(keepFetchingMessages, 100);
+    setTimeout(keepFetchingMessages, 2000);
+  }
+}
+
+async function likeMessage(msgId) {
+  try {
+    const response = await fetch(`${serverURL}/${msgId}/like`, {
+      method: "POST",
+    });
+
+    if (!response.ok) {
+      feedbackEl.innerHTML = `<p>${await response.text()}</p>`;
+      return;
+    }
+    const updatedMessage = await response.json();
+
+    state.messages = state.messages.map((msg) =>
+      msg.id === updatedMessage.id ? updatedMessage : msg,
+    );
+    displayMessages();
+  } catch (error) {
+    console.error(error.message);
+  }
+}
+
+async function dislikeMessage(msgId) {
+  try {
+    const response = await fetch(`${serverURL}/${msgId}/dislike`, {
+      method: "POST",
+    });
+
+    if (!response.ok) {
+      feedbackEl.innerHTML = `<p>${await response.text()}</p>`;
+      return;
+    }
+    const updatedMessage = await response.json();
+
+    state.messages = state.messages.map((msg) =>
+      msg.id === updatedMessage.id ? updatedMessage : msg,
+    );
+    displayMessages();
+  } catch (error) {
+    console.error(error.message);
   }
 }
 
@@ -73,6 +115,8 @@ function displayMessages() {
                 <strong>${msg.user}: ${msg.message} </strong>
                 <small>${new Date(msg.time).toLocaleString()}</small>
             </p>
+            <button onclick="likeMessage(${msg.id})">${msg.likes} 👍 </button>
+            <button onclick="dislikeMessage(${msg.id})">${msg.dislikes} 👎 </button>
             </div>
         `,
     )
