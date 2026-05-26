@@ -5,7 +5,7 @@ let messageEl = document.getElementById("message");
 let displayBox = document.getElementById("display-message");
 let feedbackEl = document.getElementById("feedback");
 
-const serverURL = `https://janefrancessc-chat-application-backend.hosting.codeyourfuture.io`;
+const serverURL = `https://janefrancessc-chat-app-backend.hosting.codeyourfuture.io`;
 // const serverURL = "http://127.0.0.1:3000";
 const state = { messages: [] };
 let pollingMode = "regular";
