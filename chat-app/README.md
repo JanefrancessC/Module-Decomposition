@@ -1,5 +1,27 @@
 # Write and Deploy Chat Application Frontend and Backend
 
+### To start the program
+
+First install dependencies:
+
+```bash
+npm install
+```
+
+From `/backend` directory:
+
+Option 1. Production mode
+
+```bash
+npm start
+```
+
+Option 2. Development mode
+
+```bash
+npm run dev
+```
+
 ### Link to the coursework
 
 https://sdc.codeyourfuture.io/decomposition/sprints/2/prep/

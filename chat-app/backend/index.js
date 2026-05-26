@@ -1,11 +1,13 @@
 import express from "express";
 import cors from "cors";
+import dotenv from "dotenv";
 
 const app = express();
 app.use(cors());
 app.use(express.json());
+app.use(dotenv())
 
-const port = 3000;
+const port = process.env.PORT || 3000;
 let nextMessageId = 1;
 const messages = [
   {
