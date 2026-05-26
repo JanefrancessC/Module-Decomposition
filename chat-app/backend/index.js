@@ -36,10 +36,6 @@ const messages = [
 const callbacksForNewMessages = [];
 
 app.get("/", (req, res) => {
-  res.json({ message: `Welcome to my Chat Application!` });
-});
-
-app.get("/messages", (req, res) => {
   let since = Number(req.query.since);
   let longPoll = req.query.longPoll === "true";
 
@@ -54,7 +50,7 @@ app.get("/messages", (req, res) => {
   res.json(messages);
 });
 
-app.post("/messages", (req, res) => {
+app.post("/", (req, res) => {
   const { message, user } = req.body;
 
   if (
@@ -84,7 +80,7 @@ app.post("/messages", (req, res) => {
   res.status(201).json({ success: true });
 });
 
-app.post("/messages/:id/like", (req, res) => {
+app.post("/:id/like", (req, res) => {
   const id = Number(req.params.id);
   const message = messages.find((msg) => msg.id === id);
 
@@ -96,7 +92,7 @@ app.post("/messages/:id/like", (req, res) => {
   res.json(message);
 });
 
-app.post("/messages/:id/dislike", (req, res) => {
+app.post("/:id/dislike", (req, res) => {
   const id = Number(req.params.id);
   const message = messages.find((msg) => msg.id === id);
 
