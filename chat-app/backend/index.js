@@ -65,8 +65,8 @@ app.post("/", (req, res) => {
 
   const newMessage = {
     id: nextMessageId++,
-    message,
-    user,
+    message: message.trim(),
+    user: user.trim(),
     time: Date.now(),
     likes: 0,
     dislikes: 0,
