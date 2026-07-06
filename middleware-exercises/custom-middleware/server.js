@@ -72,10 +72,14 @@ app.use(parseJSONArrayBody);
  * The handler only needs to build the response — all validation is done.
  */
 app.post("/", (req, res) => {
+  if (!req.username) {
+    return res
+      .status(401)
+      .send(`You're not authenticated. Please, provide a username`);
+  }
+
   // Authenticate if a username is provided
-  const authLine = req.username
-    ? `You're authenticated as ${req.username}`
-    : `You're not authenticated!`;
+  const authLine = `You're authenticated as ${req.username}`;
 
   // build subject based on count
   const count = req.body.length;
