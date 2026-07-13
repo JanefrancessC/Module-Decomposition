@@ -19,26 +19,33 @@ A real-time chat application built with **Vanilla JavaScript**, **Node.js**, and
 - Express
 - CORS
 
-## Getting Started
+## Running the Project
+
+### Backend
 
 ```bash
-git clone <[GitHub-url](https://github.com/JanefrancessC/Module-Decomposition/edit/sprint2-chat-app/)>
-cd backend
+git clone https://github.com/JanefrancessC/Module-Decomposition.git
+cd Module-Decomposition/backend
 npm install
 npm start
 ```
 
-Open the application in your browser and start chatting.
+### Frontend
 
-What I Learned
+Open `frontend/index.html` in your browser, or serve it with a local development server such as Live Server.
+
+## What I Learned
 
 This project strengthened my understanding of asynchronous JavaScript, REST APIs, client-server communication, and the differences between regular polling and long polling for real-time applications.
 
-Future Improvements
+## Future Improvements
+
 Store messages in a database
 Add user authentication
 Implement WebSockets
 Add automated tests
-Demo
+
+## Demo
+
 Frontend: <[frontend-url](https://chatapp-decomposition.onrender.com/)>
 Backend: <[backend-url](https://module-decomposition.onrender.com/)>
