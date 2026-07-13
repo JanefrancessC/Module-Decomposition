@@ -22,8 +22,8 @@ A real-time chat application built with **Vanilla JavaScript**, **Node.js**, and
 ## Getting Started
 
 ```bash
-git clone <[GitHub Link](https://github.com/JanefrancessC/Module-Decomposition/edit/sprint2-chat-app)>
-cd `backend`
+git clone <[GitHub-url](https://github.com/JanefrancessC/Module-Decomposition/edit/sprint2-chat-app/)>
+cd backend
 npm install
 npm start
 ```
